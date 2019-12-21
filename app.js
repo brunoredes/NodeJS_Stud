@@ -2,9 +2,10 @@ const express = require('express')
 const app = express()
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const config = require('./config/config')
 
-const url = 'mongodb+srv://brino:123@cluster0-njrky.azure.mongodb.net/nodeJS_API?retryWrites=true'
-const options = { reconnectTries: Number.MAX_VALUE, reconnectInterval: 500, poolSize: 5, useNewUrlParser: true }
+const url = config.database_str
+const options = { /*reconnectTries: Number.MAX_VALUE, reconnectInterval: 500,*/ poolSize: 5, useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 
 mongoose.connect(url, options)
 mongoose.set('useCreateIndex', true)
