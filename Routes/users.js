@@ -6,8 +6,8 @@ const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
 //func aux
-const createUserToken  = (userId) =>{
-    return jwt.sign({id: userId}, config.jwt_pass, {expiresIn: config.jwt_expires_in})
+const createUserToken = (userId) => {
+    return jwt.sign({ id: userId }, config.jwt_pass, { expiresIn: config.jwt_expires_in })
 }
 
 router.get('/', async (req, res) => {
@@ -32,7 +32,7 @@ router.post('/create', async (req, res) => {
         const user = await Users.create(req.body)
         user.password = undefined
 
-        return res.status(201).send({user, token: createUserToken(user.id)})
+        return res.status(201).send({ user, token: createUserToken(user.id) })
     }
     catch (err) {
         return res.status(500).send({ error: 'Erro ao buscar usuário' })
@@ -51,7 +51,7 @@ router.post('/auth', async (req, res) => {
 
         user.password = undefined
 
-        return res.send({user, token: createUserToken(user.id)})
+        return res.send({ user, token: createUserToken(user.id) })
     }
     catch (err) {
         return res.status(500).send({ error: 'Erro ao buscar usuário' })
