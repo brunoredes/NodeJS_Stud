@@ -10,7 +10,6 @@ const usersRoute = require('./Routes/users')
 const url = config.database_str
 const options = { /*reconnectTries: Number.MAX_VALUE, reconnectInterval: 500,*/ poolSize: 5, useNewUrlParser: true, useCreateIndex: true, useUnifiedTopology: true }
 
-
 mongoose.connect(url, options)
 mongoose.set('useCreateIndex', true)
 mongoose.connection.on('error', (err) => {

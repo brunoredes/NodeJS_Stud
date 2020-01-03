@@ -20,8 +20,6 @@ router.get('/', async (req, res) => {
     }
 })
 
-
-
 router.post('/create', async (req, res) => {
     const { email, password } = req.body
 
